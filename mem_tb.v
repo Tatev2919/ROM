@@ -21,6 +21,22 @@ module mem_tb;
 		read = 1'b0;
 		#5000;
 		$finish;
+		
+		
 	end
 	always #10 clk = ~clk;
+	integer file;
+	reg [7:0] data;
+
+	initial begin
+		data = 0;
+		file = $fopen("faults.txt");
+		$fdisplayb(file,"",data);
+		while(data < 16) begin
+			data = data + 1;
+			$fdisplayb(file,"",data);
+		end
+		$fclose(file); 
+	end
+
 endmodule
