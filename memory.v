@@ -1,9 +1,9 @@
 module memory(clk,read,d_out,address);
 input      clk,read;
 input      [3:0] address; 
-output reg [3:0] d_out;
+output reg [7:0] d_out;
 
-reg [3:0] data_ROM [15:0];
+reg [7:0] data_ROM [15:0];
 
 initial $readmemb("faults.txt",data_ROM);
 
